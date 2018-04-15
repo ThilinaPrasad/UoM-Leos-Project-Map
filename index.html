@@ -1,0 +1,205 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UoM Leos Project Map</title>
+  <link rel="shortcut icon" type="image/x-icon" href="http://www.uomleos.org/wp-content/uploads/2018/04/favicon-1.ico" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+      <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+  <style>
+    #map {
+      align-self: center;
+    }
+ 
+    .overlay{
+  position: absolute;
+        
+        z-index: 5;
+ }
+
+.head{
+  top:10px;
+  font-family: 'Courgette', cursive;
+   background-color:rgba(255,255,255,0.5);
+   padding:15px;
+  border-radius: 50px;
+}
+
+.head:hover{
+  cursor: pointer;
+}
+    .back {
+      top: 50px;
+        border-radius: 20px;
+       
+      }
+      @media (max-width: 576px) { 
+        .back {
+          top:70px;
+          margin-left:75px;
+        }
+        .head{
+            font-size:20px;
+            margin-left:25px;
+        }
+      }
+  </style>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCamFIG1ilV1zm3KGW5P7QXwvF5m_LiHSQ" type="text/javascript"></script>
+</head>
+
+<body>
+      <h3 align="center" class="overlay head offset-md-4" data-toggle="tooltip" data-placement="bottom" title="Click to remove all map overlays">UoM Leos Leostic Year 2017/18</h3>
+
+  <a href="http://www.uomleos.org/" class="btn btn-outline-info offset-md-10 back overlay" title="Load www.uomleos.org">Goto www.uomleos.org</a>
+  <div id="map" style="height:100vh; width:100vw;" class="mx-auto d-block"></div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OverlappingMarkerSpiderfier/1.0.3/oms.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+  //Overlay section
+  
+  $(document).ready(function(){
+      
+      $('[data-toggle="tooltip"]').tooltip();
+      
+    $(".head").click(function(){
+        $(".overlay").fadeOut('slow');
+    });
+});
+  
+  //Map
+    var image = {
+      url: 'http://www.uomleos.org/wp-content/uploads/2018/04/marker_icon.png',
+    };
+
+  
+
+    //Map Initialize
+    var srilanka = { lat: 7.8731, lng: 80.7718 };
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 7.7,
+      center: srilanka,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      fullscreenControl: true
+    });
+    infoWindow = new google.maps.InfoWindow(); // create info window object
+
+$.get("https://www.projectmap.uomleos.org/submit/files/get.php", function(data, status){
+    
+    var locations = JSON.parse(data);
+
+var oms = new OverlappingMarkerSpiderfier(map, {
+  markersWontMove: true,
+  markersWontHide: true,
+  basicFormatEvents: true
+});
+
+
+//UOM LEOS Marker
+var coordinates = { lat: 6.7968823, lng: 79.8995894 };
+      var uom_marker = new google.maps.Marker({
+        position: coordinates,
+        url: 'http://www.uomleos.org/',
+        icon: image,
+        animation: google.maps.Animation.BOUNCE,
+        map: map,
+        title: "Double click to view www.uomleos.org" , // generate title
+        name: "Leo Club of University of Moratuwa",
+        address:"University of Moratuwa, Bandaranayake Mawatha, Katubedda, Moratuwa."
+
+      });
+
+      oms.addMarker(uom_marker); 
+
+      google.maps.event.addListener(uom_marker, 'dblclick', function () { // marker onclick event
+        //window.location.href = ;
+        window.open(
+          'http://www.uomleos.org/',
+    '_blank' // <- This is what makes it open in a new window.
+);
+      });
+      //marker hover effect
+      google.maps.event.addListener(uom_marker, 'spider_click', function () { // 
+      
+      });
+      
+      google.maps.event.addListener(uom_marker, 'click', function () {
+        var content = "<b>"+uom_marker.name+"</b><br>"+uom_marker.address+"<br><br>&diams;&nbsp;Click on pin to view all projects on this location<br>&diams;&nbsp;Double tap to open www.uomleos.org";
+        infoWindow.setContent(content);
+        infoWindow.open(map, uom_marker);
+      });
+      
+      
+      google.maps.event.addListener(uom_marker, 'mouseover', function () {
+        var content = "<b>"+uom_marker.name+"</b><br>"+uom_marker.address+"<br><br>&diams;&nbsp;Click on pin to view all projects on this location<br>&diams;&nbsp;Double tap to open www.uomleos.org";
+        infoWindow.setContent(content);
+        infoWindow.open(map, uom_marker);
+      });
+      google.maps.event.addListener(uom_marker, 'mouseout', function () {
+        infoWindow.close();
+      });
+
+      //UOM LEOS MARKER
+
+  for (var i = 0; i < locations.length; i++) {
+      var place = locations[i];
+      var coordinates = { lat: parseFloat(place.lat), lng: parseFloat(place.lon) };
+      var marker = new google.maps.Marker({
+        position: coordinates,
+        url: place.url,
+        icon: image,
+        animation: google.maps.Animation.DROP,
+        map: map,
+        title: "Double click to view "+place.name , // generate title
+        name: place.name,
+        address:place.address
+
+      });
+      oms.addMarker(marker); 
+      google.maps.event.addListener(marker, 'dblclick', function () { // marker onclick event
+        //window.location.href = ;
+        window.open(
+          this.url,
+    '_blank' // <- This is what makes it open in a new window.
+);
+      });
+      //marker hover effect
+      google.maps.event.addListener(marker, 'spider_click', function () { // 
+      
+      });
+      google.maps.event.addListener(marker, 'mouseover', function () {
+        var content = "<b>"+this.name+"</b><br>"+this.address+"<br><br>&diams;&nbsp;Click on pin to view all projects on this location<br>&diams;&nbsp;Double tap to view project description";
+        infoWindow.setContent(content);
+        infoWindow.open(map, this);
+      })
+      google.maps.event.addListener(marker, 'mouseout', function () {
+        infoWindow.close();
+      });
+    }
+
+
+    });
+
+    //Locations add here
+    //["Project name",address,lat,lng,Url here]
+    /*var locations = [
+      ['Golden Nets','X Sports Arena, Mattakkuliya', 6.8135, 79.9724, 'http://www.uomleos.org/2018/04/02/golden-netz/'],
+      ['LEO Youth Camp',"National youth crops tranning center,Naula", 7.7071, 80.6521, 'http://www.uomleos.org/2018/04/01/leo-youth-camp/'],
+      ['Ttest',"National youth crops tranning center,Naula", 7.8071, 80.8521, 'http://www.uomleos.org/2018/04/01/leo-youth-camp/'],
+      ['Ttest',"National youth crops tranning center,Naula", 7.7071, 80.6521, 'http://www.uomleos.org/2018/04/01/leo-youth-camp/'],
+      ['Ttest',"National youth crops tranning center,Naula", 7.9071, 80.7521, 'http://www.uomleos.org/2018/04/01/leo-youth-camp/'],
+
+    ];*/
+
+  
+  </script>
+</body>
+
+</html>
+
+</html>

@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UoM Leos Project Map | Submission</title>
+  <link rel="shortcut icon" type="image/x-icon" href="http://www.uomleos.org/wp-content/uploads/2018/04/favicon-1.ico" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+  <link href="files/style.css" type = "text/css" rel="stylesheet">
+</head>
+
+<body style="background-image: url('back.png');">
+        <div class="space-medium">
+                <div class="container">
+                    <div class="row">
+                        <div class="mx-auto d-block offset-xl-1 col-xl-6 offset-lg-1 col-lg-10 offset-md-1 col-md-10 col-sm-12 col-12 mt10">
+                            <form>
+                                <!-- service-form -->
+                                <div class="service-form">
+                                    <div class="row">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb10 ">
+                                            <h3 align="center">Submit UoM Leos Project Location on</h3>
+                                            <h2 align="center"><a href="https://www.projectmap.uomleos.org/" title="View Map">UoM Leos Project Map</a></h2>
+
+                                        </div>
+                                        
+                                         <!-- Last Projects Btn -->
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-2">
+                                    <button type="button" class="btn btn-default btn-block mb10" data-toggle="modal" data-target="#submittedProjects">
+                                        View Submitted Projects
+                                    </button>
+                                </div>
+                                <!-- Last Projects Btn -->
+                                       
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                            <div class="form-group service-form-group">
+                                                <label class="control-label sr-only" for="name"></label>
+                                                <input id="name" type="text" placeholder="Project Name" class="form-control" required>
+                                                <div class="form-icon"><i class="fas fa-hands-helping"></i></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                            <div class="form-group service-form-group">
+                                                <label class="control-label sr-only" for="address"></label>
+                                                <textarea id="address" placeholder="Location address" class="form-control" required></textarea>
+                                                <div class="form-icon"><i class="fas fa-map-marker-alt"></i></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
+                                                <div class="form-group service-form-group">
+                                                    <label class="control-label sr-only" for="lat"></label>
+                                                    <input id="lat" type="text" placeholder="Location latitude" class="form-control" required>
+                                                    <div class="form-icon"><i class="fas fa-map-pin"></i></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12  ">
+                                                <div class="form-group service-form-group">
+                                                    <label class="control-label sr-only" for="lon"></label>
+                                                    <input id="lon" type="text" placeholder="Location longitude" class="form-control" required>
+                                                    <div class="form-icon"><i class="fas fa-map-pin"></i></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center">
+                                                    <div class="form-group service-form-group">
+                                                            <a class="text-cente" href="https://www.latlong.net/" title="www.latlong.net" target="_blank"><small>Find latitude & longitude of your location</small></a>
+                                                    </div>
+                                                </div>
+                                            
+                                       
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                            <div class="form-group service-form-group">
+                                                <label class="control-label sr-only" for="url"></label>
+                                                <input id="url" type="text" placeholder="Project URL on www.uomleos.org" class="form-control" required>
+                                                <div class="form-icon"><i class="fa fa-link"></i></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                                <div class="form-group service-form-group">
+                                                    <label class="control-label sr-only" for="password"></label>
+                                                    <input id="password" type="password" placeholder="Enter submitter password here" class="form-control" required>
+                                                    <div class="form-icon"><i class="fas fa-key"></i></div>
+                                                </div>
+                                            </div>
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                            <button type="button" name="singlebutton" id="submit" class="btn btn-default btn-block mb10"><i class="far fa-save"></i>&nbsp;&nbsp;Submit Location Data</button>
+                                            <p class="text-center"><small>It's your responsibility to publish correct data here.</small></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- /.service-form -->
+                        </div>
+                        
+                        <!-- Last Projects -->
+                <div class="modal fade" id="submittedProjects" tabindex="-1" role="dialog" aria-labelledby="submittedProjects" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" align="center">Currently Submitted Projects</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" id="submitted">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" id="model-btn" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Last Projects -->
+      
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="files/script.js"></script>
+</body>
+
+</html>
+
+</html>
