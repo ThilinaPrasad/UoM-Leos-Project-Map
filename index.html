@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
       <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
   <style>
     #map {
       align-self: center;
@@ -16,45 +18,65 @@
  
     .overlay{
   position: absolute;
-        
+        width:100vw;
         z-index: 5;
  }
 
-.head{
-  top:10px;
-  font-family: 'Courgette', cursive;
-   background-color:rgba(255,255,255,0.5);
-   padding:15px;
-  border-radius: 50px;
-}
 
-.head:hover{
-  cursor: pointer;
-}
-    .back {
-      top: 50px;
-        border-radius: 20px;
-       
+      
+      .brand{
+        font-family: 'Indie Flower', cursive;
+        font-weight: 700;
+        opacity: 0.8;
       }
-      @media (max-width: 576px) { 
-        .back {
-          top:70px;
-          margin-left:75px;
-        }
-        .head{
-            font-size:20px;
-            margin-left:25px;
-        }
+
+      .brand:hover{
+          opacity: 0.5;
+          cursor: pointer;
+      }
+      .pmap-navbar{
+        background-color: rgba(255, 255, 255,0.5)!important;
       }
   </style>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCamFIG1ilV1zm3KGW5P7QXwvF5m_LiHSQ" type="text/javascript"></script>
 </head>
 
 <body>
-      <h3 align="center" class="overlay head offset-md-4" data-toggle="tooltip" data-placement="bottom" title="Click to remove all map overlays">UoM Leos Leostic Year 2017/18</h3>
+       <nav class="navbar navbar-expand-md navbar-toggleable-xl navbar-light pmap-navbar overlay">
+        <div class="container">
+            <!-- Left Side Of Navbar -->
+            <a href="" class="navbar-brand brand" title="Reload Project Map">
+                <font size="5">
+                   <img src="http://www.uomleos.org/wp-content/uploads/2017/08/cropped-cropped-UOMLeoLogo-1.png" style="width:33px;height:33px;"> UoM Leos Project Map
+                </font>
+              </a>            
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li><a class="nav-link text-center" href="http://www.uomleos.org/" data-toggle="tooltip" data-placement="bottom" title="UoM Leos Web page"><i class="fas fa-globe fa-lg"></i></a></li>
+                <li><a class="nav-link text-center" href="https://www.facebook.com/uomleos" data-toggle="tooltip" data-placement="bottom"  title="UoM Leos Facebook page"><i class="fab fa-facebook fa-lg"></i></a></li>
+                <li><a class="nav-link text-center" href="https://www.instagram.com/uomleos" data-toggle="tooltip" data-placement="bottom"  title="UoM Leos Instagram page"><i class="fab fa-instagram fa-lg"></i><a></li>
+                <li><a class="nav-link text-center" href="https://www.linkedin.com/company/uomleos" data-toggle="tooltip" data-placement="bottom"  title="UoM Leos Linkedin page"><i class="fab fa-linkedin fa-lg"></i></a></li>
+                <li><a class="nav-link text-center" href="https://twitter.com/uomleos" data-toggle="tooltip" data-placement="bottom"  title="UoM Leos Twitter page"><i class="fab fa-twitter fa-lg"></i></a></li>
+                <li><a class="nav-link text-center" href="https://www.youtube.com/uomleos" data-toggle="tooltip" data-placement="bottom"  title="UoM Leos Youtube chanel"><i class="fab fa-youtube-square fa-lg"></i></a></li>
+                <li><a class="nav-link text-center" href="https://plus.google.com/+UOMLeos" data-toggle="tooltip" data-placement="bottom"  title="UoM Leos Google+ page"><i class="fab fa-google-plus-g fa-lg"></i></a></li>
+                <li><a class="nav-link text-center" href="http://www.uom-leos.blogspot.com" data-toggle="tooltip" data-placement="bottom"  title="UoM Leos Blogger"><i class="fab fa-blogger fa-lg"></i></a></li>
+                <li><a class="nav-link text-center" href="https://www.flickr.com/people/uomleos" data-toggle="tooltip" data-placement="bottom"  title="UoM Leos Flicker page"><i class="fab fa-flickr fa-lg"></i></a></li>
+                <li><a class="nav-link text-center" href="https://www.scribd.com/uomleos" data-toggle="tooltip" data-placement="bottom"  title="UoM Leos Scribd page"><i class="fab fa-scribd fa-lg"></i></a></li>
+            </ul>
+            </div>
 
-  <a href="http://www.uomleos.org/" class="btn btn-outline-info offset-md-10 back overlay" title="Load www.uomleos.org">Goto www.uomleos.org</a>
+        </div>
+    </nav>
   <div id="map" style="height:100vh; width:100vw;" class="mx-auto d-block"></div>
+  <footer class="footer text-center">
+      <div class="container">
+        <span class="text-muted">© Project Map 2018 @ UoM Leos. All right reserved.</span>
+      </div>
+    </footer>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OverlappingMarkerSpiderfier/1.0.3/oms.min.js"></script>
@@ -67,9 +89,6 @@
       
       $('[data-toggle="tooltip"]').tooltip();
       
-    $(".head").click(function(){
-        $(".overlay").fadeOut('slow');
-    });
 });
   
   //Map
