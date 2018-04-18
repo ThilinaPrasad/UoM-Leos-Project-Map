@@ -18,11 +18,13 @@
  
     .overlay{
   position: absolute;
-        width:100vw;
+        
         z-index: 5;
  }
 
-
+.navbar{
+  width:100vw;
+}
       
       .brand{
         font-family: 'Indie Flower', cursive;
@@ -36,6 +38,14 @@
       }
       .pmap-navbar{
         background-color: rgba(255, 255, 255,0.5)!important;
+      }
+
+      .project-count{
+        padding:10px;
+        background-color: rgba(255,255,255,0.5); 
+        border-radius: 5px;
+        top:63px;
+        right:2px;
       }
   </style>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCamFIG1ilV1zm3KGW5P7QXwvF5m_LiHSQ" type="text/javascript"></script>
@@ -71,6 +81,7 @@
 
         </div>
     </nav>
+    <h6 class="overlay project-count" id="projectCount"></h6>
   <div id="map" style="height:100vh; width:100vw;" class="mx-auto d-block"></div>
   <footer class="footer text-center">
       <div class="container">
@@ -111,7 +122,7 @@
 $.get("https://www.projectmap.uomleos.org/submit/files/get.php", function(data, status){
     
     var locations = JSON.parse(data);
-
+    $('#projectCount').text("Covered "+String(locations.length)+" social projects");
 var oms = new OverlappingMarkerSpiderfier(map, {
   markersWontMove: true,
   markersWontHide: true,
