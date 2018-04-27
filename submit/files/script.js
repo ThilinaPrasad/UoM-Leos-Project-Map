@@ -1,3 +1,49 @@
+function login(){
+    $.confirm({
+        theme: 'modern',
+        icon: 'fas fa-user-circle',
+        title: 'Please Enter Password?',
+        content: '<input type="password" placeholder="ProjectMap password" class="del-pass form-control is-valid" required style="text-align:center;">' ,
+        draggable: true,
+        animationBounce: 2.5,
+        type: 'green',
+        typeAnimated: true,
+        buttons: {
+            Delete: {
+            text: 'Login',
+            btnClass: 'btn-green',
+            action : function () {
+                var del_password = this.$content.find('.del-pass').val().trim();
+                if(del_password== '' || del_password !='projectmap@uomleos'){
+                    $.confirm({
+                        theme: 'modern',
+                        icon: 'fas fa-exclamation-circle',
+                        title: 'Password Incorrect',
+                        content: 'Please enter correct login password & try again' ,
+                        draggable: true,
+                        animationBounce: 2.5,
+                        type: 'red',
+                        typeAnimated: true,
+                        buttons: {
+                            Delete: {
+                            text: 'Try Again',
+                            btnClass: 'btn-red',
+                            action : function () {
+                                login();
+                            }
+                        },
+                            
+                        }
+                    });
+                }
+            }
+        },
+            
+        }
+    });    
+}
+
+login();
 
 
 $("#submit").click(function(){
@@ -118,7 +164,6 @@ function deleteProject(project){
     
     var project_name = $(project).attr('data-name');
     var project_id = $(project).attr('data-id');
-   alert(project_id);
 
     $.confirm({
         theme: 'modern',
