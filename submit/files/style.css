@@ -322,3 +322,8 @@ select option {
 #model-btn{
     transform: scale(0.6);
 }
+
+.delete-btn:hover{
+    cursor: pointer;
+    color:#f44336;
+}

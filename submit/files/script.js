@@ -103,9 +103,9 @@ $.get("https://www.projectmap.uomleos.org/submit/files/get.php", function(data, 
     //place the markers
     var projects = "";
                  for (var i = 0; i < locations.length; i++) {
-                    projects+='<span class="badge badge-success h2">'+locations[i].name+'</span>&nbsp;';
+                    projects+='<span class="badge badge-success h2" >'+locations[i].name+'&nbsp;&nbsp;<span class="delete-btn" onclick="deleteProject(this);" data-toggle="tooltip" data-placement="top" title="Delete '+locations[i].name+'" data-id="'+locations[i].id+'" data-name="'+locations[i].name+'"><i class="fas fa-times-circle"></i></span></span>&nbsp;';
                 }
-                console.log(projects);
+                //console.log(projects);
                 document.getElementById('submitted').innerHTML = projects;
         
         
@@ -113,3 +113,62 @@ $.get("https://www.projectmap.uomleos.org/submit/files/get.php", function(data, 
 }
 
 loadSubmitted();
+
+function deleteProject(project){
+    
+    var project_name = $(project).attr('data-name');
+    var project_id = $(project).attr('data-id');
+   alert(project_id);
+
+    $.confirm({
+        theme: 'modern',
+        icon: 'far fa-trash-alt',
+        title: 'Remove '+project_name+' ?',
+        content: 'Please enter submitter password here',
+        closeIcon: true,
+        draggable: true,
+        animationBounce: 2.5,
+        type: 'red',
+        typeAnimated: true,
+        buttons: {
+            Delete: {
+            text: 'Delete',
+            btnClass: 'btn-red',
+            action : function () {
+                $.post("https://www.projectmap.uomleos.org/submit/files/delete.php",
+                {
+                    id: project_id
+                },
+                function(data, status){
+                    if(status=='success'){
+                        loadSubmitted();
+                        $.alert({
+                            theme: 'modern',
+                            title: 'Successfully Deleted!',
+                            content: "Project deleted successfully!",
+                            icon: 'fas fa-check-circle',
+                            type: 'green',
+                            draggable: true,
+                        });
+    
+            
+                    }else{
+                        $.alert({
+                            theme: 'modern',
+                            title: 'Error!',
+                            content: "Error happend while deleting data. Please try again!",
+                            icon: 'fas fa-exclamation-circle',
+                            type: 'red',
+                            draggable: true,
+                        });
+                    }
+                });
+            }
+        },
+            cancel: function () {
+                
+            }
+            
+        }
+    });
+}
