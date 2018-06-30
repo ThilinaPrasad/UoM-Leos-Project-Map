@@ -1,3 +1,4 @@
 [10-Apr-2018 04:36:04 America/New_York] PHP Warning:  include_once(dbConfig.php): failed to open stream: No such file or directory in /home/uomleoso/projectmap.uomleos.org/submit/files/crud.php on line 5
 [10-Apr-2018 04:36:04 America/New_York] PHP Warning:  include_once(): Failed opening 'dbConfig.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/uomleoso/projectmap.uomleos.org/submit/files/crud.php on line 5
 [10-Apr-2018 04:36:04 America/New_York] PHP Fatal error:  Class 'DbConfig' not found in /home/uomleoso/projectmap.uomleos.org/submit/files/crud.php on line 7
+[27-Apr-2018 04:35:45 America/New_York] PHP Parse error:  syntax error, unexpected ''";' (T_ENCAPSED_AND_WHITESPACE) in /home/uomleoso/projectmap.uomleos.org/submit/files/delete.php on line 6

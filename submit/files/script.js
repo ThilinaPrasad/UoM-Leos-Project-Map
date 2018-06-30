@@ -1,3 +1,15 @@
+   //page loading animation part 1
+   $(window).on('load', function() {
+    $("#pageLoad").fadeOut('fast');
+});
+
+$(document).ready(function() {
+    //page loading animation part 2
+    $("#app").fadeIn('fast');});
+ 
+
+    ////////////******************************************************************************////////////////////////////
+
 function login(){
     $.confirm({
         theme: 'modern',
@@ -45,16 +57,19 @@ function login(){
 
 login();
 
+  
 
 $("#submit").click(function(){
     var name = $("#name").val().trim();
+    var year = $("#year").val().trim();
+   
 var address = $("#address").val().trim();
 var lat = $("#lat").val().trim();
 var lon = $("#lon").val().trim();
 var url = $("#url").val().trim();
 var password = $("#password").val().trim();
 
-if(address!='' && name !='' && lat!='' && lon!='' && url!=''){
+if(address!='' && name !='' && lat!='' && lon!='' && url!='' && year!='0'){
 
     if($.isNumeric( lat ) && $.isNumeric( lon )){
 
@@ -63,6 +78,7 @@ if(address!='' && name !='' && lat!='' && lon!='' && url!=''){
             
     {
         pname: name,
+        pyear:year,
         paddress: address,
         plat : lat,
         plon : lon,
@@ -169,7 +185,7 @@ function deleteProject(project){
         theme: 'modern',
         icon: 'far fa-trash-alt',
         title: 'Remove '+project_name+' ?',
-        content: 'Please enter submitter password here',
+        content: 'please confirm to delete',
         closeIcon: true,
         draggable: true,
         animationBounce: 2.5,

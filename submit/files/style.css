@@ -10,6 +10,15 @@ body {
     line-height: 28px;
 }
 
+#pageLoad {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+}
+
 h1,
 h2,
 h3,
@@ -326,4 +335,8 @@ select option {
 .delete-btn:hover{
     cursor: pointer;
     color:#f44336;
+}
+
+select option{
+    padding:100px 5px;
 }

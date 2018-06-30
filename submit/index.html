@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>UoM Leos Project Map | Submission</title>
-  <link rel="shortcut icon" type="image/x-icon" href="http://www.uomleos.org/wp-content/uploads/2018/04/favicon-1.ico" />
+  <link rel="shortcut icon" type="image/x-icon" href="https://www.projectmap.uomleos.org/favicon.ico" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
@@ -13,6 +13,8 @@
 </head>
 
 <body style="background-image: url('back.png');">
+        <div style="background: url('../preloader.gif') center no-repeat #fff;" id="pageLoad"></div>
+    <div id="app">
         <div class="space-medium">
                 <div class="container">
                     <div class="row">
@@ -34,54 +36,66 @@
                                     </button>
                                 </div>
                                 <!-- Last Projects Btn -->
-                                       
+                                
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                    <div class="form-group service-form-group">
+                                        <label class="control-label sr-only" for="year"></label>
+                                        <select id="year" placeholder="Leostic year" class="form-control">
+                                            <option hidden value="0">Select project leostic year</option>
+                                            <option value="2018/19">2018/19</option>
+                                            <option value="2017/18">2017/18</option>
+                                            <select>
+                                        <div class="form-icon"><i class="fas fa-caret-down fa-lg"></i></div>
+                                    </div>
+                                </div>
+
                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
                                             <div class="form-group service-form-group">
                                                 <label class="control-label sr-only" for="name"></label>
                                                 <input id="name" type="text" placeholder="Project Name" class="form-control" required>
-                                                <div class="form-icon"><i class="fas fa-hands-helping"></i></div>
+                                                <div class="form-icon"><i class="fas fa-hands-helping fa-lg"></i></div>
                                             </div>
                                         </div>
                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
                                             <div class="form-group service-form-group">
                                                 <label class="control-label sr-only" for="address"></label>
                                                 <textarea id="address" placeholder="Location address" class="form-control" required></textarea>
-                                                <div class="form-icon"><i class="fas fa-map-marker-alt"></i></div>
+                                                <div class="form-icon"><i class="fas fa-map-marker-alt fa-lg"></i></div>
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
                                                 <div class="form-group service-form-group">
                                                     <label class="control-label sr-only" for="lat"></label>
-                                                    <input id="lat" type="text" placeholder="Location latitude" class="form-control" required>
-                                                    <div class="form-icon"><i class="fas fa-map-pin"></i></div>
+                                                    <input id="lat" type="text" placeholder="Location latitude" class="form-control" required readonly>
+                                                    <div class="form-icon"><i class="fas fa-map-pin fa-lg"></i></div>
                                                 </div>
                                             </div>
-                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12  ">
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12  " >
                                                 <div class="form-group service-form-group">
                                                     <label class="control-label sr-only" for="lon"></label>
-                                                    <input id="lon" type="text" placeholder="Location longitude" class="form-control" required>
-                                                    <div class="form-icon"><i class="fas fa-map-pin"></i></div>
+                                                    <input id="lon" type="text" placeholder="Location longitude" class="form-control" required readonly>
+                                                    <div class="form-icon"><i class="fas fa-map-pin fa-lg"></i></div>
                                                 </div>
                                             </div>
-                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center">
+                                            <!--div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center">
                                                     <div class="form-group service-form-group">
                                                             <a class="text-cente" href="https://www.latlong.net/" title="www.latlong.net" target="_blank"><small>Find latitude & longitude of your location</small></a>
                                                     </div>
-                                                </div>
+                                                </div-->
                                             
                                        
                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
                                             <div class="form-group service-form-group">
                                                 <label class="control-label sr-only" for="url"></label>
                                                 <input id="url" type="text" placeholder="Project URL on www.uomleos.org" class="form-control" required>
-                                                <div class="form-icon"><i class="fa fa-link"></i></div>
+                                                <div class="form-icon"><i class="fa fa-link fa-lg"></i></div>
                                             </div>
                                         </div>
                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
                                                 <div class="form-group service-form-group">
                                                     <label class="control-label sr-only" for="password"></label>
                                                     <input id="password" type="password" placeholder="Enter submitter password here" class="form-control" required>
-                                                    <div class="form-icon"><i class="fas fa-key"></i></div>
+                                                    <div class="form-icon"><i class="fas fa-key fa-lg"></i></div>
                                                 </div>
                                             </div>
                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
@@ -113,7 +127,7 @@
                     </div>
                 </div>
                 <!-- Last Projects -->
-      
+            </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -121,10 +135,27 @@
   <script src="files/script.js"></script>
   <script>
   $(document).ready(function(){
-
+      
       $('[data-toggle="tooltip"]').tooltip();
-
+      
   });
+  
+  // Get Lat Long from address and save data
+  $('#address').keyup(function(){
+      var address = $('#address').val();
+      if(address.trim().length>0){
+      url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=AIzaSyCbJ6Y_E_zZgyr5kRwYpAAnNSxHtiBnX98"
+          $.get(url, function (data, status) {
+            if (status == 'success') {
+              var lat = data.results[0].geometry.location.lat;
+              var long = data.results[0].geometry.location.lng;
+              $('#lat').val(lat);
+              $('#lon').val(long);
+            } 
+          });
+      }
+  });
+          
   </script>
 </body>
 
