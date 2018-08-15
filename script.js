@@ -10,8 +10,12 @@ $(document).ready(function() {
     
  ///////********************************************************************************************************/////////////////////
  //Map Functionalities
- var image = {
-    url: 'https://www.projectmap.uomleos.org/marker_icon.ico',
+ var image_2017_18 = {
+    url: 'https://www.projectmap.uomleos.org/marker_icon_2017_18.ico',
+  };
+
+  var image_2018_19 = {
+    url: 'https://www.projectmap.uomleos.org/marker_icon_2018_19.ico',
   };
 
   var markers = [];
@@ -19,7 +23,7 @@ $(document).ready(function() {
   //Map Initialize
   var srilanka = { lat: 7.8731, lng: 80.7718 };
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 7.5,
+    zoom: 7,
     center: srilanka,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     fullscreenControl: true
@@ -125,6 +129,10 @@ setMarkers(locations);
     for (var i = 0; i < locations.length; i++) {
         var place = locations[i];
         var coordinates = { lat: parseFloat(place.lat), lng: parseFloat(place.lon) };
+        var image = image_2017_18;
+        if(place.year=='2018/19'){
+          image = image_2018_19;
+        }
         var marker = new google.maps.Marker({
           position: coordinates,
           url: place.url,
@@ -170,6 +178,7 @@ setMarkers(locations);
     var rtn = [];
     for(var i=0;i<array.length;i++){
         if(array[i].year==filter){
+            console.log(array[i]);
             rtn.push(array[i]);
         }
     }

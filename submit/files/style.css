@@ -340,3 +340,7 @@ select option {
 select option{
     padding:100px 5px;
 }
+
+.project_inner{
+    padding: 0 10px 0 10px;
+}

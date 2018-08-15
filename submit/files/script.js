@@ -47,6 +47,8 @@ function login(){
                             
                         }
                     });
+                }else{
+                    sessionStorage.setItem("projectmaplogin", true);
                 }
             }
         },
@@ -55,7 +57,9 @@ function login(){
     });    
 }
 
-login();
+if(!sessionStorage.getItem("projectmaplogin")){
+    login();
+}
 
   
 
@@ -163,12 +167,28 @@ function loadSubmitted(){
 $.get("https://www.projectmap.uomleos.org/submit/files/get.php", function(data, status){
                     var locations = JSON.parse(data);
     //place the markers
-    var projects = "";
+    var projects_1 = "";
+    var projects_2 = "";
+    var count_1 = 0;
+    var count_2 = 0;
+
                  for (var i = 0; i < locations.length; i++) {
-                    projects+='<span class="badge badge-success h2" >'+locations[i].name+'&nbsp;&nbsp;<span class="delete-btn" onclick="deleteProject(this);" data-toggle="tooltip" data-placement="top" title="Delete '+locations[i].name+'" data-id="'+locations[i].id+'" data-name="'+locations[i].name+'"><i class="fas fa-times-circle"></i></span></span>&nbsp;';
+                     console.log()
+                     if(locations[i].year=="2017/18"){
+                         count_1+=1;
+                        projects_1+='<span class="badge badge-primary h2" >'+locations[i].name+'&nbsp;&nbsp;<span class="delete-btn" onclick="deleteProject(this);" data-toggle="tooltip" data-placement="top" title="Delete '+locations[i].name+'" data-id="'+locations[i].id+'" data-name="'+locations[i].name+'"><i class="fas fa-times-circle"></i></span></span>&nbsp;';
+                     }else{
+                         count_2+=1;
+                        projects_2+='<span class="badge badge-warning h2" >'+locations[i].name+'&nbsp;&nbsp;<span class="delete-btn" onclick="deleteProject(this);" data-toggle="tooltip" data-placement="top" title="Delete '+locations[i].name+'" data-id="'+locations[i].id+'" data-name="'+locations[i].name+'"><i class="fas fa-times-circle"></i></span></span>&nbsp;';
+                     }
                 }
                 //console.log(projects);
-                document.getElementById('submitted').innerHTML = projects;
+                document.getElementById('2017_18_count').innerHTML = count_1;
+                document.getElementById('2018_19_count').innerHTML = count_2;
+                document.getElementById('2017_18').innerHTML = projects_1;
+                document.getElementById('2018_19').innerHTML = projects_2;
+                
+
         
         
         });

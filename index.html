@@ -69,6 +69,12 @@
         height:auto;
       }
 
+      .year-drop:focus{
+        border: none;
+        outline: none;
+        
+      }
+
       .award{
         width: 150px;
         height: 150px;
@@ -122,7 +128,7 @@
 </head>
 
 <body>
-    <div style="background: url('preloader.gif') center no-repeat #fff;" id="pageLoad"></div>
+    <div style="background: url('preloader.gif') center no-repeat #fefcfe;" id="pageLoad"></div>
 <div id="app">
        <nav class="navbar navbar-expand-md navbar-toggleable-xl navbar-light pmap-navbar overlay">
         <div class="container">
@@ -158,14 +164,14 @@
     </h6>
     <select class="overlay form-control year-drop" id="year">
       <option value="0">All</option>
-      <option value="2018/19">2018/19</option>
+      <option value="2018/19" style="background-image:url(https://www.projectmap.uomleos.org/marker_icon_2017_18.ico);">2018/19</option>
       <option value="2017/18">2017/18</option>
     </select>
     <img src="mostoutstanding.png" alt="" class="overlay award" id="animate3d">
   <div id="map" style="height:100vh; width:100vw;" class="mx-auto d-block"></div>
   <footer class="footer text-center">
       <div class="container">
-        <span class="text-muted">© Project Map 2018 @ UoM Leos. All right reserved.</span>
+        <span class="text-muted" id="footerLine"></span>
       </div>
     </footer>
 
@@ -184,6 +190,12 @@
       $('[data-toggle="tooltip"]').tooltip();
       
 });
+
+var d = new Date();
+    var n = d.getFullYear();
+$("#footerLine").html('©ProjectMap '+n+'  @<a href="http://www.uomleos.org/">UoM Leos</a>. All Rights Reserved.');
+
+
   
   </script>
 </body>
