@@ -13,5 +13,4 @@ $data=$crud->getData($query);
     }else{
         echo json_encode($data);
     }
-
 ?>

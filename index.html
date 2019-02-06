@@ -11,6 +11,7 @@
       <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+      <link rel="stylesheet" href="snow/snow.css">
   <style>
 
 #pageLoad {
@@ -127,7 +128,22 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCamFIG1ilV1zm3KGW5P7QXwvF5m_LiHSQ" type="text/javascript"></script>
 </head>
 
-<body>
+   <body>
+       
+   <!--  chrismas effect-->
+    <!--div id="snowflakeContainer">
+    <p class="snowflake">&#10054;</p>
+</div-->
+
+<!--iframe src="assets/snow/audio.mp3" allow="controls autoplay" loop="true" style="display:none" id="iframeAudio" allowullScreen>
+</iframe> 
+    <audio controls autoplay loop id="playAudio" style="display:none;">
+      <source src="assets/snow/audio.ogg" type="audio/ogg">
+        <source src="assets/snow/audio.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio-->
+        <!--  chrismas effect-->
+
     <div style="background: url('preloader.gif') center no-repeat #fefcfe;" id="pageLoad"></div>
 <div id="app">
        <nav class="navbar navbar-expand-md navbar-toggleable-xl navbar-light pmap-navbar overlay">
@@ -198,6 +214,7 @@ $("#footerLine").html('©ProjectMap '+n+'  @<a href="http://www.uomleos.org/">Uo
 
   
   </script>
+  <script src="snow/snow.js"></script>
 </body>
 
 </html>

@@ -141,7 +141,8 @@ setMarkers(locations);
           map: map,
           title: "Double click to view "+place.name , // generate title
           name: place.name,
-          address:place.address
+          address:place.address,
+          year:place.year
     
         });
 
@@ -158,7 +159,7 @@ setMarkers(locations);
         
         });
         google.maps.event.addListener(marker, 'mouseover', function () {
-          var content = "<b>"+this.name+"</b><br>"+this.address+"<br><br>&diams;&nbsp;Click on pin to view all projects on this location<br>&diams;&nbsp;Double tap to view project description";
+          var content = "<b style='font-weight:bold;'>"+this.name+"</b>&nbsp;("+this.year+")<br>"+this.address+"<br><br>&diams;&nbsp;Click on pin to view all projects on this location<br>&diams;&nbsp;Double tap to view project description";
           infoWindow.setContent(content);
           infoWindow.open(map, this);
         })
